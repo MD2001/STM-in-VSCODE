@@ -1,0 +1,137 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+CCMRAM           0x10000000         0x00010000         xrw
+RAM              0x20000000         0x00020000         xrw
+FLASH            0x08000000         0x00100000         xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x20020000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00000200                _Min_Heap_Size = 0x200
+                0x00000400                _Min_Stack_Size = 0x400
+
+.text           0x08000000      0x7f4
+                0x08000000                . = ALIGN (0x4)
+ *(.text)
+ .text          0x08000000      0x3ec C:\Users\ENG\Downloads\Embedded\MCAL\GPIO\GPIO_programe.o
+                0x08000000                MGPIO_voidSetPinDirection
+                0x0800021c                MGPIO_voidSetPinValue
+                0x080002c4                MGPIO_voidSetPortValue
+                0x08000368                MGPIO_u8GetPinValue
+ .text          0x080003ec      0x20c C:\Users\ENG\Downloads\Embedded\MCAL\NVIC\NVIC_programe.o
+                0x080003ec                MNVIC_voidEnableInterrupt
+                0x08000434                MNVIC_voidDisableInterrupt
+                0x0800047c                MNVIC_voidSetPindingFlag
+                0x080004c4                MNVIC_voidClearPindingFlag
+                0x0800050c                MNVIC_u8ActiveFlagStause
+                0x08000580                MNVIC_voidSWInterrupt
+                0x080005a0                MNVIC_voidConfigPriortyMode
+                0x080005c0                MNVIC_voidSetInterruptProirity
+ .text          0x080005f8       0xc8 C:\Users\ENG\Downloads\Embedded\MCAL\RCC\RCC_programe.o
+                0x080005f8                MRCC_voidInitSysClock
+                0x08000618                MRCC_voidEnablePeripheral
+                0x0800066c                MRCC_voidDisablePeripheral
+ .text          0x080006c0       0xcc C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+                0x080006c0                MSysTic_voidSetBusyWait
+                0x080006fc                MSysTic_voidInit
+                0x0800073c                MSysTic_voidInterval
+                0x08000778                SysTick_IRQHandler
+ .text          0x0800078c       0x66 C:\Users\ENG\Downloads\Embedded\APP\main.o
+                0x0800078c                main
+ *(.text*)
+                0x080007f4                . = ALIGN (0x4)
+ *fill*         0x080007f2        0x2 
+                0x080007f4                _etext = .
+
+.glue_7         0x080007f4        0x0
+ .glue_7        0x080007f4        0x0 linker stubs
+
+.glue_7t        0x080007f4        0x0
+ .glue_7t       0x080007f4        0x0 linker stubs
+
+.vfp11_veneer   0x080007f4        0x0
+ .vfp11_veneer  0x080007f4        0x0 linker stubs
+
+.v4_bx          0x080007f4        0x0
+ .v4_bx         0x080007f4        0x0 linker stubs
+
+.iplt           0x080007f4        0x0
+ .iplt          0x080007f4        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+
+.rel.dyn        0x080007f4        0x0
+ .rel.iplt      0x080007f4        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+
+.rodata         0x080007f4        0x0
+                0x080007f4                . = ALIGN (0x4)
+ *(.rodata)
+ *(.rodata*)
+                0x080007f4                . = ALIGN (0x4)
+
+.data           0x20000000        0x0 load address 0x080007f4
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _sdata = .
+ *(.data)
+ .data          0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\GPIO\GPIO_programe.o
+ .data          0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\NVIC\NVIC_programe.o
+ .data          0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\RCC\RCC_programe.o
+ .data          0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+ .data          0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\APP\main.o
+ *(.data*)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x080007f4
+ .igot.plt      0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+
+.bss            0x20000000        0x4 load address 0x080007f4
+                0x20000000                _sbss = .
+ *(.bss)
+ .bss           0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\GPIO\GPIO_programe.o
+ .bss           0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\NVIC\NVIC_programe.o
+ .bss           0x20000000        0x0 C:\Users\ENG\Downloads\Embedded\MCAL\RCC\RCC_programe.o
+ .bss           0x20000000        0x4 C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+ .bss           0x20000004        0x0 C:\Users\ENG\Downloads\Embedded\APP\main.o
+ *(.bss*)
+                0x20000004                . = ALIGN (0x4)
+                0x20000004                _ebss = .
+
+._user_heap_stack
+                0x20000004      0x604 load address 0x080007f4
+                0x20000008                . = ALIGN (0x8)
+ *fill*         0x20000004        0x4 
+                0x20000208                . = (. + _Min_Heap_Size)
+ *fill*         0x20000008      0x200 
+                0x20000608                . = (. + _Min_Stack_Size)
+ *fill*         0x20000208      0x400 
+                0x20000608                . = ALIGN (0x8)
+LOAD C:\Users\ENG\Downloads\Embedded\MCAL\GPIO\GPIO_programe.o
+LOAD C:\Users\ENG\Downloads\Embedded\MCAL\NVIC\NVIC_programe.o
+LOAD C:\Users\ENG\Downloads\Embedded\MCAL\RCC\RCC_programe.o
+LOAD C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+LOAD C:\Users\ENG\Downloads\Embedded\APP\main.o
+OUTPUT(C:\Users\ENG\Downloads\Embedded\application.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 C:\Users\ENG\Downloads\Embedded\MCAL\GPIO\GPIO_programe.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a C:\Users\ENG\Downloads\Embedded\MCAL\NVIC\NVIC_programe.o
+ .comment       0x00000049       0x4a C:\Users\ENG\Downloads\Embedded\MCAL\RCC\RCC_programe.o
+ .comment       0x00000049       0x4a C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+ .comment       0x00000049       0x4a C:\Users\ENG\Downloads\Embedded\APP\main.o
+
+.ARM.attributes
+                0x00000000       0x2d
+ .ARM.attributes
+                0x00000000       0x2d C:\Users\ENG\Downloads\Embedded\MCAL\GPIO\GPIO_programe.o
+ .ARM.attributes
+                0x0000002d       0x2d C:\Users\ENG\Downloads\Embedded\MCAL\NVIC\NVIC_programe.o
+ .ARM.attributes
+                0x0000005a       0x2d C:\Users\ENG\Downloads\Embedded\MCAL\RCC\RCC_programe.o
+ .ARM.attributes
+                0x00000087       0x2d C:\Users\ENG\Downloads\Embedded\MCAL\SysTic\Systick_programe.o
+ .ARM.attributes
+                0x000000b4       0x2d C:\Users\ENG\Downloads\Embedded\APP\main.o
