@@ -9,4 +9,6 @@
 
 #define NULL_PTR_FUNCTION ((void *)0)
 
+#define CONCATE(x,y)        x##y
+
 #endif

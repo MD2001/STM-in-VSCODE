@@ -38,7 +38,8 @@ void MRCC_voidInitSysClock(void)
         #elif       RCC_PLL_INPUT ==RCC_PLL_IN_HSE
 					RCC_CR= 0x01010000;		// Enable PLL & HSE
 					RCC_CFGR = 0x00010002;	//Set HSE no divide
-		#else		#error "pll clock source is wrong"
+		#else		
+			#error "pll clock source is wrong"
 		
 		#endif
 	#else 		

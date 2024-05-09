@@ -126,21 +126,21 @@ void MGPIO_voidSetPinValue(u8 Copy_Port,u8 Copy_Pin,u8 Copy_Value)
 			{
 				case MGPIO_GPIOA :
 									if(Copy_Value == High) 
-									{SET_BIT(GPIOA_BSRR,High);}
+									{SET_BIT(GPIOA_BSRR,Copy_Pin);}
 									else if (Copy_Value == Low)
-									{SET_BIT(GPIOA_BRR,High);}
+									{SET_BIT(GPIOA_BRR,Copy_Pin);}
 									break;
 									
 				case MGPIO_GPIOB :	if(Copy_Value == High) 
-				                    {SET_BIT(GPIOB_BSRR,High);}
+				                    {SET_BIT(GPIOB_BSRR,Copy_Pin);}
 				                    else if (Copy_Value == Low)
-				                    {SET_BIT(GPIOB_BRR,High);}
+				                    {SET_BIT(GPIOB_BRR,Copy_Pin);}
 				                    break;
 				
 				case MGPIO_GPIOC :	if(Copy_Value == High) 
-				                    {SET_BIT(GPIOC_BSRR,High);}
+				                    {SET_BIT(GPIOC_BSRR,Copy_Pin);}
 				                    else if (Copy_Value == Low)
-				                    {SET_BIT(GPIOC_BRR,High);}
+				                    {SET_BIT(GPIOC_BRR,Copy_Pin);}
 				                    break;
 							
 			}
@@ -215,5 +215,5 @@ ID		User          Date            Detailes
 *******************************************************************************
 1		Mohamed diaa	17Mar2024 		Task_2 the main functions of GPIO
 2		Mohamed diaa	28Mar2024		Task_10 remove assert function and add /error/ comment
-
+3		Mohamed diaa	29APR2024		Task_30 fix some error (in logic) {MGPIO_voidSetPinValue}
 */

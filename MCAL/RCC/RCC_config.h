@@ -11,7 +11,7 @@
 			RCC_PLL			
 */
 
-#define RCC_Clock_TYPE	RCC_HSI
+#define RCC_Clock_TYPE	RCC_PLL
 
 /*Options:
 			RCC_PLL_IN_HSI_DIV_2
@@ -21,8 +21,8 @@
 
 #if RCC_Clock_TYPE == RCC_PLL
 	
-	#define  RCC_PLL_INPUT	RCC_PLL_IN_HSE	
+	#define  RCC_PLL_INPUT	RCC_PLL_IN_HSI_DIV_2	
 	
 #endif
 
-#endif
+#endif	

@@ -1,7 +1,7 @@
 #ifndef SYSTIC_INTERFACE_H
 #define SYSTIC_INTERFACE_H
 
-
+#define SyTi_MAX_DELAY          8388607 
 /****************************** prototype Section ****************************************/
 //Set Start value of load regester
 //void MSysTic_voidSetStartValue(u32 Copy_Value);

@@ -31,16 +31,9 @@
 int main()
 {
     MRCC_voidInitSysClock();
-    MRCC_voidEnablePeripheral(RCC_APB2, 0);
-    MRCC_voidEnablePeripheral(RCC_APB2, 1);
     MRCC_voidEnablePeripheral(RCC_APB2, 2);
-    MRCC_voidEnablePeripheral(RCC_APB2, 3);
     MGPIO_voidSetPinDirection(MGPIO_GPIOA,MGPIO_PIN1,Output_PP_2MHZ);
-    MGPIO_voidSetPinDirection(MGPIO_GPIOA,MGPIO_PIN2,AF_PP_10MHZ);
-    MGPIO_voidSetPinDirection(MGPIO_GPIOB,MGPIO_PIN3,Output_PP_2MHZ);
-    MGPIO_voidSetPinDirection(MGPIO_GPIOA,MGPIO_PIN4,Output_PP_2MHZ);
-    MGPIO_voidSetPinDirection(MGPIO_GPIOA,MGPIO_PIN5,Output_PP_2MHZ);
-    MGPIO_voidSetPinDirection(MGPIO_GPIOA,MGPIO_PIN6,Output_PP_2MHZ);
+    MGPIO_voidSetPinValue(MGPIO_GPIOA,MGPIO_PIN1,High);
     while(1)
     {
         
