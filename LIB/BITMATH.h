@@ -3,9 +3,11 @@
 #define RCC_BITMATH_H
 
 
-#define SET_BIT(reg,bit)	((1<<bit)|reg)
-#define CLR_BIT(reg,bit)	((~(1<<bit))&reg)
-#define GET_BIT(reg,bit)	((reg<<bit)&1)
+/*Bit-Math macros*/
+#define SET_BIT(REG , BIT)     REG |= 1<<BIT
+#define CLR_BIT(REG , BIT)     REG &= ~(1<<BIT)
+#define TOG_BIT(REG , BIT)     REG ^= 1<<BIT
+#define GET_BIT(REG , BIT)     ((REG >> BIT) & 1)
 
 #define NULL_PTR_FUNCTION ((void *)0)
 
